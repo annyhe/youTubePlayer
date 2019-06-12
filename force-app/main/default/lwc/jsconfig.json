@@ -5,6 +5,9 @@
         "paths": {
             "c/basicYouTubePlayer": [
                 "basicYouTubePlayer/basicYouTubePlayer.js"
+            ],
+            "c/youTubePlayerRecordWrapper": [
+                "youTubePlayerRecordWrapper/youTubePlayerRecordWrapper.js"
             ]
         }
     },
