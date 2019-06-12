@@ -1,6 +1,8 @@
 # YouTube Player Lightning Web Component
 
-Two Lightning Web Components to 
+These are two Lightning Web Components to add YouTube video playing capabilities to your Salesforce org. Configure which video to play via the Lightning App Builder. Light up your org with videos for training, enablement, entertainment ... The possibilities are endless!
+
+Use the **basicYouTubePlayer** for Home and App pages, and **youTubePlayerRecordWrapper** component for Record pages. 
 
 > These components are designed to run on Salesforce Platform. If you want to experience Lightning Web Components on any platform, please visit https://lwc.dev, and try out our Lightning Web Components sample application [LWC Recipes OSS](https://github.com/trailheadapps/lwc-recipes-oss).
 
@@ -46,24 +48,24 @@ sfdx force:org:open
 
 ### Directions to add a YouTube player component to an App or Home page
 
-7. Go to an App or Home page. Click on the **Setup** icon on the top left, then click **Edit Page**
+7. Go to an App or Home page. Click on the **Setup** icon on the top left, then click **Edit Page**.
 
 8. Drag the **basicYouTubePlayer** component onto the page.
 
 9. In the Lightning App Builder, set youTubeId field to the desired YouTube video's id.
 
-10. Click **Save**, then **Back**
+10. Click **Save**, then **Back**.
 
 11. Enjoy your YouTube player on the App or Home page!
 
 ### Directions to add a YouTube player component to a Record page
 
-7. Go to a Record page. Click on the **Setup** icon on the top left, then click **Edit Page**
+7. Go to a Record page. Click on the **Setup** icon on the top left, then click **Edit Page**.
 
 8. Drag the **youTubePlayerRecordWrapper** component onto the page.
 
 9. In the Lightning App Builder, set the objectName field to the desired object's API name, and the fieldName field to the API name of the field whose value is the YouTube video id.
 
-10. Click **Save**, then **Back**
+10. Click **Save**, then **Back**.
 
 11. Enjoy your YouTube player on the Record page!
