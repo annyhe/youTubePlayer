@@ -22,8 +22,8 @@ sfdx force:auth:web:login -d -a myhuborg
 3. Clone the youTubePlayer repository:
 
 ```
-git clone https://github.com/trailheadapps/lwc-recipes
-cd lwc-recipes
+git clone https://github.com/annyhe/youTubePlayer
+cd youTubePlayer
 ```
 
 4. Create a scratch org and provide it with an alias (**youTubePlayer** in the command below):
@@ -48,9 +48,9 @@ sfdx force:org:open
 
 7. Go to an App or Home page. Click on the **Setup** icon on the top left, then click **Edit Page**
 
-8. Drag the basicYouTubePlayer component onto the page.
+8. Drag the **basicYouTubePlayer** component onto the page.
 
-9. In the Lightning App Builder, set the youTubeId in the youTubeId field in the Lightning App Builder. 
+9. In the Lightning App Builder, set youTubeId field to the desired YouTube video's id.
 
 10. Click **Save**, then **Back**
 
@@ -60,9 +60,9 @@ sfdx force:org:open
 
 7. Go to a Record page. Click on the **Setup** icon on the top left, then click **Edit Page**
 
-8. Drag the youTubePlayerRecordWrapper component onto the page.
+8. Drag the **youTubePlayerRecordWrapper** component onto the page.
 
-9. In the Lightning App Builder, set the objectName field to the desired object's API name, and the fieldName field to the API name of the field that contains the YouTube video id.
+9. In the Lightning App Builder, set the objectName field to the desired object's API name, and the fieldName field to the API name of the field whose value is the YouTube video id.
 
 10. Click **Save**, then **Back**
 
