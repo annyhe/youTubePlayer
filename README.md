@@ -64,7 +64,7 @@ sfdx force:org:open
 
 8. Drag the **youTubePlayerRecordWrapper** component onto the page.
 
-9. In the Lightning App Builder, set the objectName field to the desired object's API name, and the fieldName field to the API name of the field whose value is the YouTube video id.
+9. In the Lightning App Builder, set the fieldName field to the name of the field that holds the YouTube video ID. 
 
 10. Click **Save**, then **Back**.
 
