@@ -7,7 +7,6 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="objectName" type="String" placeholder="Which object has the youtube video field?" required="true" />
             <property name="fieldName" type="String" placeholder="Which field has the youtube video id?" required="true" />
         </targetConfig>
     </targetConfigs>   

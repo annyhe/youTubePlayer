@@ -1,19 +1,10 @@
 import { LightningElement, api, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
+import getFieldValueFromRecordIdFieldName from '@salesforce/apex/YouTubeController.getFieldValueFromRecordIdFieldName';
 
 export default class YouTubePlayerRecordWrapper extends LightningElement {
     @api fieldName;
-    @api objectName;
     @api recordId;
 
-    @wire(getRecord, { recordId: '$recordId', fields: '$fieldNames' })
-    record;
-
-    get youTubeId() {
-        return this.record.data.fields[this.fieldName].value;
-    }
-
-    get fieldNames() {
-        return [this.objectName + '.' + this.fieldName];
-    }
+    @wire(getFieldValueFromRecordIdFieldName, { recordId: '$recordId', fieldName: '$fieldName' })
+    youTubeId;
 }
