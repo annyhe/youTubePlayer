@@ -11,8 +11,10 @@ export default class YouTubePlayerRecordWrapper extends LightningElement {
     wiredFieldValue({ error, data }) {
         if (data) {
             this.youTubeId = data;
+            this.error = '';
         } else if (error) {
             this.error = error;
+            this.data = '';
         } 
     }
 }
