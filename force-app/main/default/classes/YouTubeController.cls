@@ -8,7 +8,6 @@ public with sharing class YouTubeController {
             
         SObject record = Database.Query(theQuery);
         String fieldValue = (String) record.get(fieldName);
-        System.debug('the return value = '+fieldValue);
         
         return fieldValue;
     }
