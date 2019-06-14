@@ -14,7 +14,7 @@ export default class YouTubePlayerRecordWrapper extends LightningElement {
             this.error = '';
         } else if (error) {
             this.error = error;
-            this.data = '';
+            this.youTubeId = '';
         } 
     }
 }
