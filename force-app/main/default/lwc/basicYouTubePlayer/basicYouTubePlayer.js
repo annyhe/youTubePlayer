@@ -19,8 +19,6 @@ export default class BasicYouTubePlayer extends LightningElement {
             loadScript(this, youTubePath + '/YouTubeJS/widget_api.js'),
         ])
         .then(() => {
-            console.log('Initialized');
-            console.log(YT);
             this.onYouTubeIframeAPIReady();
         })
         .catch(error => {
