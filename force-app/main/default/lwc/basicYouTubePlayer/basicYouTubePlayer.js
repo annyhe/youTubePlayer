@@ -7,7 +7,9 @@ export default class BasicYouTubePlayer extends LightningElement {
     @api youTubeId;
 
     youTubePathInitialized = false;
-
+    get youTubeUrl () {
+        return 'https://www.youtube.com/embed/' + this.youTubeId + '?enablejsapi=1&origin=https://salesforce.com';
+    }
     renderedCallback() {
         if (this.youTubePathInitialized) {
             return;
@@ -50,16 +52,15 @@ export default class BasicYouTubePlayer extends LightningElement {
         console.log('explanation is: ' + explanation);
         //   document.getElementById('explanation').innerHTML = explaination;
     }                
+    onPlayerStateChange(event) {
+        console.log('on event change' + JSON.stringify(event));
+    }
     onYouTubeIframeAPIReady() {
-        console.log(this.template.querySelector('div.player'));
-        console.log(this.youTubeId);
-        const player = new YT.Player(this.template.querySelector('div.player'), {
-            height: '390',
-            width: '390',
-            videoId: this.youTubeId,
+        const player = new YT.Player(this.template.querySelector('iframe.player'), {
             events: {
                 'onReady': this.onPlayerReady,
                 'onError': this.onErrorFunc,
+                'onStateChange': this.onPlayerStateChange,
             }
         });
         console.log(player);

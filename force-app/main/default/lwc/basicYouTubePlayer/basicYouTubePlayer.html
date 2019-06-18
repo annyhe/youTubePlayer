@@ -1,6 +1,3 @@
 <template>
-    <template if:true={youTubeId}>
-        <div class='player' lwc:dom="manual"></div>
-    </template>
-    <template if:false={youTubeId}>Empty YouTube ID found. Please specify a YouTube ID.</template>    
+    <iframe class='player' width="100%" height="390" lwc:dom="manual" src={youTubeUrl} allowfullscreen></iframe>
 </template>
