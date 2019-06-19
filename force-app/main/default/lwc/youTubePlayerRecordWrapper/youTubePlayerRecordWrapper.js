@@ -16,4 +16,4 @@ export default class YouTubePlayerRecordWrapper extends LightningElement {
     get fieldNames() {
         return [this.objectApiName + '.' + this.fieldName];
     }
-} 
+}

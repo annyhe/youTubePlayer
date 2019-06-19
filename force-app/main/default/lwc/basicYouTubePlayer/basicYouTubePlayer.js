@@ -13,22 +13,15 @@ export default class BasicYouTubePlayer extends LightningElement {
             return;
         }
 
-        window.onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
-        window.onPlayerReady = function() {
-            console.log('on Player ready');
-        }
-
-        window.onPlayerError = this.onPlayerError.bind(this);
-
         Promise.all([
             loadScript(this, youTubePath + '/iframe_api.js'),
             loadScript(this, youTubePath + '/widget_api.js'),
         ]) 
         .then(() => {
-            console.log('YouTube scripts finished loading');
+            this.onYouTubeIframeAPIReady();
         })
         .catch((error) => {
-            console.log(error);
+            this.showErrorToast(error);
         });
     }
 
@@ -44,7 +37,6 @@ export default class BasicYouTubePlayer extends LightningElement {
             explanation = 'The owner of the requested video does not allow it to be played in embedded players.';
         }
         
-        console.log('explanation is: ' + explanation);
         this.showErrorToast(explanation);
     }    
 
@@ -58,7 +50,7 @@ export default class BasicYouTubePlayer extends LightningElement {
     }
 
     onYouTubeIframeAPIReady() {
-        // if this is called repeatedly it will add divs repeatedly. check if the playerElem exists before creating new elements
+        // check if the playerElem exists before creating new elements
         let playerElem = this.template.querySelector('.player');
         if (!playerElem) {
             const containerElem = this.template.querySelector('.wrapper');
@@ -72,8 +64,7 @@ export default class BasicYouTubePlayer extends LightningElement {
             width: '100%',
             videoId: this.youTubeId,            
             events: {
-              'onReady': window.onPlayerReady,
-              'onError': window.onPlayerError
+              'onError': this.onPlayerError.bind(this)
             }
         });        
     }

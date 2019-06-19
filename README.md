@@ -50,24 +50,24 @@ sfdx force:org:open
 
 ### Directions to add a YouTube player component to an App or Home page
 
-7. Go to an App or Home page. Click on the **Setup** icon on the top left, then click **Edit Page**.
+1. Go to an App or Home page. Click on the **Setup** icon on the top left, then click **Edit Page**.
 
-8. Drag the **basicYouTubePlayer** component onto the page.
+2. Drag the **basicYouTubePlayer** component onto the page.
 
-9. In the Lightning App Builder, set youTubeId field to the desired YouTube video's id.
+3. In the Lightning App Builder, set youTubeId field to the desired YouTube video's id.
 
-10. Click **Save**, then **Back**.
+4. Click **Save**, then **Back**.
 
-11. Enjoy your YouTube player on the App or Home page!
+5. Enjoy your YouTube player on the App or Home page!
 
 ### Directions to add a YouTube player component to a Record page
 
-7. Go to a Record page. Click on the **Setup** icon on the top left, then click **Edit Page**.
+1. Go to a Record page. Click on the **Setup** icon on the top left, then click **Edit Page**.
 
-8. Drag the **youTubePlayerRecordWrapper** component onto the page.
+2. Drag the **youTubePlayerRecordWrapper** component onto the page.
 
-9. In the Lightning App Builder, set the fieldName field to the name of the field that holds the YouTube video ID. 
+3. In the Lightning App Builder, set the fieldName field to the name of the field that holds the YouTube video ID. 
 
-10. Click **Save**, then **Back**.
+4. Click **Save**, then **Back**.
 
-11. Enjoy your YouTube player on the Record page!
+5. Enjoy your YouTube player on the Record page!
