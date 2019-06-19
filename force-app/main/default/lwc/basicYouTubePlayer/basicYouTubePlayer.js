@@ -1,7 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import youTubePath from '@salesforce/resourceUrl/Archive';
+import youTubePath from '@salesforce/resourceUrl/YouTubeJS';
 
 export default class BasicYouTubePlayer extends LightningElement {
     @api youTubeId;
