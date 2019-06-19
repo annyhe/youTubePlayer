@@ -8,7 +8,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__AppPage, lightning__HomePage">
-            <property name="youTubeId" type="String" placeholder="Please enter the YouTube video id" required="true" />
+            <property name="youTubeId" type="String" placeholder="Please enter the YouTube video ID" required="true" />
         </targetConfig>
     </targetConfigs>   
 </LightningComponentBundle>

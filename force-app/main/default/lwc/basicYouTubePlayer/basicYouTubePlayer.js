@@ -7,10 +7,7 @@ export default class BasicYouTubePlayer extends LightningElement {
     @api youTubeId;
     player;
 
-    youTubePathInitialized = false;
-    get youTubeUrl () {
-        return 'https://www.youtube.com/embed/' + this.youTubeId + '?enablejsapi=1&origin=https://salesforce.com';
-    }
+    youTubePathInitialized = false; 
     renderedCallback() {
         if (this.youTubePathInitialized || !this.youTubeId) {
             return;
@@ -38,7 +35,7 @@ export default class BasicYouTubePlayer extends LightningElement {
     onPlayerError(e) {
         let explanation = '';
         if (e.data === 2) {
-            explanation = 'invalid YouTube ID';
+            explanation = 'Invalid YouTube ID';
         } else if (e.data === 5) {
             explanation = 'The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.';
         } else if (e.data === 100) {
@@ -79,7 +76,5 @@ export default class BasicYouTubePlayer extends LightningElement {
               'onError': window.onPlayerError
             }
         });        
-
-        console.log('in onYouTubeIframeAPIReady:');
     }
 }
