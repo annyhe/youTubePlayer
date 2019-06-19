@@ -1,7 +1,6 @@
 import { LightningElement, api } from 'lwc';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { loadScript } from 'lightning/platformResourceLoader';
-import youTubePath from '@salesforce/resourceUrl/YouTubeJS';
+import youTubePath from '@salesforce/resourceUrl/Archive';
 
 export default class BasicYouTubePlayer extends LightningElement {
     @api youTubeId;
@@ -14,55 +13,36 @@ export default class BasicYouTubePlayer extends LightningElement {
         if (this.youTubePathInitialized) {
             return;
         }
-        this.youTubePathInitialized = true;
 
-        Promise.all([
-            loadScript(this, youTubePath + '/YouTubeJS/iframe_api.js'),
-            loadScript(this, youTubePath + '/YouTubeJS/widget_api.js'),
-        ])
-        .then(() => {
-            this.onYouTubeIframeAPIReady();
-        })
-        .catch(error => {
-            console.log(error);
-            this.dispatchEvent(
-                new ShowToastEvent({
-                    title: 'Error loading YouTube',
-                    message: error? error.message : 'no message found on error',
-                    variant: 'error',
-                }),
-            );
-        });
-    }
-    onPlayerReady() {
-        console.log('YouTube player is ready');
-    }
-    onErrorFunc(e) {
-        let explanation = '';
-        if (e.data === 2) {
-            explanation = 'invalid YouTube ID';
-        } else if (e.data === 5) {
-            explanation = 'The requested content cannot be played in an HTML5 player or another error related to the HTML5 player has occurred.';
-        } else if (e.data === 100) {
-            explanation = 'The video requested was not found. This error occurs when a video has been removed (for any reason) or has been marked as private.';
-        } else if (e.data === 101 || e.data === 150) {
-            explanation = 'The owner of the requested video does not allow it to be played in embedded players.';
+        window.onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
+        window.onPlayerReady = function(e) {
+            e.target.playVideo();
         }
-        
-        console.log('explanation is: ' + explanation);
-        //   document.getElementById('explanation').innerHTML = explaination;
-    }                
-    onPlayerStateChange(event) {
-        console.log('on event change' + JSON.stringify(event));
-    }
-    onYouTubeIframeAPIReady() {
-        const player = new YT.Player(this.template.querySelector('iframe.player'), {
-            events: {
-                'onReady': this.onPlayerReady,
-                'onError': this.onErrorFunc,
-                'onStateChange': this.onPlayerStateChange,
-            }
+
+        window.onPlayerStateChange = function(e) {
+            console.log('in onPlayerStateChange' + e.target);
+        }
+        Promise.all([
+            loadScript(this, youTubePath + '/iframe_api.js'),
+            loadScript(this, youTubePath + '/widget_api.js'),
+        ]) 
+        .then(() => {
+            console.log('YouTube scripts finished loading');
+        })
+        .catch((error) => {
+            console.log(error);
         });
+    }
+
+    onYouTubeIframeAPIReady() {
+        let player = new YT.Player(this.template.querySelector('.player'), {
+            events: {
+              'onReady': window.onPlayerReady,
+              'onStateChange': window.onPlayerStateChange
+            }
+        });        
+
+        console.log('in onYouTubeIframeAPIReady:');
         console.log(player);
     }
 }
