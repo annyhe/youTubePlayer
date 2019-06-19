@@ -1,10 +1,10 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import youTubePath from '@salesforce/resourceUrl/Archive';
 
 export default class BasicYouTubePlayer extends LightningElement {
     @api youTubeId;
-    @track error;
     player;
 
     youTubePathInitialized = false;
@@ -48,8 +48,17 @@ export default class BasicYouTubePlayer extends LightningElement {
         }
         
         console.log('explanation is: ' + explanation);
-        this.error = explanation;
+        this.showErrorToast(explanation);
     }    
+
+    showErrorToast(explanation) {
+        const evt = new ShowToastEvent({
+            title: 'Error loading YouTube player',
+            message: explanation,
+            variant: 'error',
+        });
+        this.dispatchEvent(evt);
+    }
 
     onYouTubeIframeAPIReady() {
         // if this is called repeatedly it will add divs repeatedly. check if the playerElem exists before creating new elements
