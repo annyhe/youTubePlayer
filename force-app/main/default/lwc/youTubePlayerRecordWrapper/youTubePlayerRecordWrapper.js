@@ -10,7 +10,9 @@ export default class YouTubePlayerRecordWrapper extends LightningElement {
     record;
 
     get youTubeId() {
-        return this.record.data ? this.record.data.fields[this.fieldName].value : '';
+        return this.record.data
+            ? this.record.data.fields[this.fieldName].value
+            : '';
     }
 
     get fieldNames() {

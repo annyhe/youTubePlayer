@@ -1,6 +1,10 @@
 <template>
     <template if:true={youTubeId}>
-        <c-basic-you-tube-player you-tube-id={youTubeId}></c-basic-you-tube-player>
-    </template>    
-    <template if:false={youTubeId}>YouTube ID field not found. Please double check the field name.</template>        
+        <c-basic-you-tube-player
+            you-tube-id={youTubeId}
+        ></c-basic-you-tube-player>
+    </template>
+    <template if:false={youTubeId}>
+        <p>YouTube ID field not found. Please double check the field name.</p>
+    </template>
 </template>
