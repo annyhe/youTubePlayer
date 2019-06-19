@@ -1,8 +1,7 @@
 <template>
     <template if:true={youTubeId}>
-        <div>
-            <div class='player' lwc:dom="manual"></div>
-        </div>
+        <template if:true={error}>{error}</template>
+        <div class='wrapper' lwc:dom="manual"></div>
     </template>
     <template if:false={youTubeId}>Empty YouTube ID found. Please specify a YouTube ID.</template>    
 </template>
