@@ -14,7 +14,7 @@ export default class BasicYouTubePlayer extends LightningElement {
         }
 
         if (this.YouTubePathInitialized && this.player) {
-            this.player.loadVideoById(this.youTubeId, 0, 0);
+            this.player.cueVideoById(this.youTubeId);
         } 
 
         if (!this.YouTubePathInitialized) {
