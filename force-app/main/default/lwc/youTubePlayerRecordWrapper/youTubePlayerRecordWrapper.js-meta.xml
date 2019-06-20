@@ -7,7 +7,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="fieldName" type="String" placeholder="Which field has the YouTube video ID?" required="true"/>
+            <property name="fieldName" type="String" placeholder="Which field has the YouTube video ID?" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
