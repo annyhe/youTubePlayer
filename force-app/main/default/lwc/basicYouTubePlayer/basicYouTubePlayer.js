@@ -18,9 +18,7 @@ export default class BasicYouTubePlayer extends LightningElement {
             } else {
                 this.onYouTubeIframeAPIReady();
             }
-        } 
-
-        if (!window.YT) {
+        } else {
             Promise.all([
                 loadScript(this, YouTubePath + '/iframe_api.js'),
                 loadScript(this, YouTubePath + '/widget_api.js')
@@ -62,22 +60,18 @@ export default class BasicYouTubePlayer extends LightningElement {
     }
 
     onYouTubeIframeAPIReady() {
-        // check if the playerElem exists before creating new elements
-        let playerElem = this.template.querySelector('.player');
-        if (!playerElem) {
-            const containerElem = this.template.querySelector('.wrapper');
-            playerElem = document.createElement('DIV');
-            playerElem.className = 'player';
-            containerElem.appendChild(playerElem);
+        const containerElem = this.template.querySelector('.wrapper');
+        const playerElem = document.createElement('DIV');
+        playerElem.className = 'player';
+        containerElem.appendChild(playerElem);
 
-            this.player = new window.YT.Player(playerElem, {
-                height: '390',
-                width: '100%',
-                videoId: this.youTubeId,
-                events: {
-                    onError: this.onPlayerError.bind(this)
-                }
-            });
-        } 
+        this.player = new window.YT.Player(playerElem, {
+            height: '390',
+            width: '100%',
+            videoId: this.youTubeId,
+            events: {
+                onError: this.onPlayerError.bind(this)
+            }
+        });
     }
 }
