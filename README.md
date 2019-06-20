@@ -4,7 +4,7 @@ These are two Lightning Web Components to add YouTube video playing capabilities
 
 Here’s a video of how to configure the finished components. Enjoy the Mozart’s Eine Kleine Nachtmusik in the background! (https://drive.google.com/open?id=1KizkUURFWxrsljgl0KWERSVYf6zhNdnW)
 
-Use the **basicYouTubePlayer** for Home and App pages, and **youTubePlayerRecordWrapper** component for Record pages. 
+Use the **basicYouTubePlayer** for Home and App pages, and **youTubePlayerRecordWrapper** component for Record pages.
 
 > These components are designed to run on Salesforce Platform. If you want to experience Lightning Web Components on any platform, please visit https://lwc.dev, and try out our Lightning Web Components sample application [LWC Recipes OSS](https://github.com/trailheadapps/lwc-recipes-oss).
 
@@ -66,7 +66,7 @@ sfdx force:org:open
 
 2. Drag the **youTubePlayerRecordWrapper** component onto the page.
 
-3. In the Lightning App Builder, set the fieldName field to the name of the field that holds the YouTube video ID. 
+3. In the Lightning App Builder, set the fieldName field to the name of the field that holds the YouTube video ID.
 
 4. Click **Save**, then **Back**.
 
