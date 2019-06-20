@@ -7,17 +7,20 @@ export default class BasicYouTubePlayer extends LightningElement {
     @api youTubeId;
     player;
 
-    YouTubePathInitialized = false;
     renderedCallback() {
         if (!this.youTubeId) {
             return;
         }
 
-        if (this.YouTubePathInitialized && this.player) {
-            this.player.cueVideoById(this.youTubeId);
+        if (window.YT) {
+            if (this.player) {
+                this.player.cueVideoById(this.youTubeId);
+            } else {
+                this.onYouTubeIframeAPIReady();
+            }
         } 
 
-        if (!this.YouTubePathInitialized) {
+        if (!window.YT) {
             Promise.all([
                 loadScript(this, YouTubePath + '/iframe_api.js'),
                 loadScript(this, YouTubePath + '/widget_api.js')
@@ -29,8 +32,6 @@ export default class BasicYouTubePlayer extends LightningElement {
                     this.showErrorToast(error);
                 });
         }
-
-        this.YouTubePathInitialized = true;
     }
 
     onPlayerError(e) {
