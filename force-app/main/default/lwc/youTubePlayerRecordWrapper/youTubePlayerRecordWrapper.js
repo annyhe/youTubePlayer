@@ -6,7 +6,7 @@ export default class YouTubePlayerRecordWrapper extends LightningElement {
     @api objectApiName;
     @api recordId;
 
-    @wire(getRecord, { recordId: '$recordId', fields: '$fieldNames' })
+    @wire(getRecord, { recordId: '$recordId', fields })
     record;
 
     get youTubeId() {
@@ -15,7 +15,7 @@ export default class YouTubePlayerRecordWrapper extends LightningElement {
             : '';
     }
 
-    get fieldNames() {
+    get fields() {
         return [this.objectApiName + '.' + this.fieldName];
     }
 }
