@@ -9,20 +9,28 @@ export default class BasicYouTubePlayer extends LightningElement {
 
     YouTubePathInitialized = false;
     renderedCallback() {
-        if (this.YouTubePathInitialized || !this.youTubeId) {
+        if (!this.youTubeId) {
             return;
         }
 
-        Promise.all([
-            loadScript(this, YouTubePath + '/iframe_api.js'),
-            loadScript(this, YouTubePath + '/widget_api.js')
-        ])
-            .then(() => {
-                this.onYouTubeIframeAPIReady();
-            })
-            .catch(error => {
-                this.showErrorToast(error);
-            });
+        if (this.YouTubePathInitialized && this.player) {
+            this.player.loadVideoById(this.youTubeId, 0, 0);
+        } 
+
+        if (!this.YouTubePathInitialized) {
+            Promise.all([
+                loadScript(this, YouTubePath + '/iframe_api.js'),
+                loadScript(this, YouTubePath + '/widget_api.js')
+            ])
+                .then(() => {
+                    this.onYouTubeIframeAPIReady();
+                })
+                .catch(error => {
+                    this.showErrorToast(error);
+                });
+        }
+
+        this.YouTubePathInitialized = true;
     }
 
     onPlayerError(e) {
@@ -60,15 +68,15 @@ export default class BasicYouTubePlayer extends LightningElement {
             playerElem = document.createElement('DIV');
             playerElem.className = 'player';
             containerElem.appendChild(playerElem);
-        }
 
-        this.player = new YT.Player(playerElem, {
-            height: '390',
-            width: '100%',
-            videoId: this.youTubeId,
-            events: {
-                onError: this.onPlayerError.bind(this)
-            }
-        });
+            this.player = new window.YT.Player(playerElem, {
+                height: '390',
+                width: '100%',
+                videoId: this.youTubeId,
+                events: {
+                    onError: this.onPlayerError.bind(this)
+                }
+            });
+        } 
     }
 }
